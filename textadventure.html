@@ -181,15 +181,26 @@
             }
 
             function letsGo(){
-                pic.src = "#";
-                ptext1.innerHTML = "Yes! You finally start heading to the pirates who have fled to Florida. You get on a boat and begin rowing.";
-                ptext2.innerHTML = "";
-                b1.innerHTML = "";
-                b2.innerHTML = "";
+                pic.src = "images/rowboat.png";
+                ptext1.innerHTML = "Yes! You finally start heading to the pirates who have fled to Florida. You get on a boat and begin rowing. You get to Florida and now you need to find the pirates.";
+                ptext2.innerHTML = "What do you do?";
+                b1.innerHTML = "Ask a stranger about the pirates";
+                b2.innerHTML = "Go to the building called 'No pir8s herrre'";
                 b1.style.display = "block";
                 b2.style.display = "block";
-                b3.style.display = "block";
-                b4.style.display = "block";
+                b3.style.display = "none";
+                b4.style.display = "none";
+            }
+
+            function bruhLetsAdventure(){
+                pic.src = "images/thanoos.gif";
+                ptext1.innerHTML = "THE END...";
+                ptext2.innerHTML = "";
+                b1.innerHTML = "Go Back (Best Option)"
+                b1.style.display = "block";
+                b2.style.display = "none";
+                b3.style.display = "none";
+                b4.style.display = "none";
             }
 
             //state machine
@@ -246,6 +257,19 @@
                     }else if (button == 2){
                         bruhLetsAdventure();
                         state = "bruhLetsAdventure";
+                    }
+                }else if (state == "letsGo"){
+                    if (button == 1){
+                        askedStranger();
+                        state = "askedStranger";
+                    }else if (button == 2){
+                        pirateBuilding();
+                        state = "pirateBuilding";
+                    }
+                }else if (state == "bruhLetsAdventure"){
+                    if (button == 1){
+                        niceSpell();
+                        state = "niceSpell";
                     }
                 }
             }
