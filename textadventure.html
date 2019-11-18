@@ -131,7 +131,7 @@
             }
 
             function chooseWeapon(){
-                pic.src = "images/oranges.jpg";
+                pic.src = "images/weapons.png";
                 ptext1.innerHTML = "He got a new pair of shorts which had a note, it was from the pirates. The note read, “We got yure orenges. And oui wont giv them bak… Ha ha ha” It took Chad a while to finish reading it because of the handwriting, but he eventually did and decided that he needed to get his oranges back. He went to his armoury for weapons.";
                 ptext2.innerHTML = "What weapon should he choose?";
                 b1.innerHTML = "Sword";
@@ -144,7 +144,7 @@
             }
 
             function end(){
-                pic.src = "images/youdied.png";
+                pic.src = "images/thanoos.gif";
                 ptext1.innerHTML = "THE END...";
                 ptext2.innerHTML = "";
                 b1.innerHTML = "Go Back (Best Option)"
@@ -169,7 +169,7 @@
             }
 
             function niceSpell(){
-                pic.src = "#";
+                pic.src = "images/wand.png";
                 ptext1.innerHTML = "You chose to put " + spell + " on your weapon. Cool choice!";
                 ptext2.innerHTML = "Now, are you ready to embark on your adventure!";
                 b1.innerHTML = "YES!";
@@ -178,6 +178,18 @@
                 b2.style.display = "block";
                 b3.style.display = "none";
                 b4.style.display = "none";
+            }
+
+            function letsGo(){
+                pic.src = "#";
+                ptext1.innerHTML = "Yes! You finally start heading to the pirates who have fled to Florida. You get on a boat and begin rowing.";
+                ptext2.innerHTML = "";
+                b1.innerHTML = "";
+                b2.innerHTML = "";
+                b1.style.display = "block";
+                b2.style.display = "block";
+                b3.style.display = "block";
+                b4.style.display = "block";
             }
 
             //state machine
