@@ -95,8 +95,6 @@
                 <div id='storytext'>
                     <p id='ptext1'></p>
                     <p id='ptext2'></p>
-                    <p id='ptext3'></p>
-                    <p id='ptext4'></p>
                 </div>
                 <div id='choices'>
                     <a id='b1' onclick="bclick(1)" href="#">Choice 1</a>
@@ -111,53 +109,83 @@
             var pic = document.getElementById('storyimg');
             var ptext1 = document.getElementById('ptext1');
             var ptext2 = document.getElementById('ptext2');
-            var ptext3 = document.getElementById('ptext3');
-            var ptext4 = document.getElementById('ptext4');
             var b1 = document.getElementById('b1');
             var b2 = document.getElementById('b2');
             var b3 = document.getElementById('b3');
             var b4 = document.getElementById('b4');
             var state = "intro";
+            var weapon = "";
             intro();
 
             function intro(){
                 pic.src = "images/island.jpg";
-                ptext1.innerHTML = "";
-                ptext2.innerHTML = "Chad is an absolute hunk of a man. He is the sole inhabitant of a small island that is part of a long archipelago in the Carribean. He decided to live there once he bought all 15,676,000,000 oranges in America. Nowadays, he sleeps in his hut all day and builds new things out of his surplus of oranges. He stores this surplus of oranges in his shorts, that just so happen to contain his own personal pocket dimension, which he acquired from a dangerous adventure where he lived off of nothing but his copious amount of oranges. The oranges take up about 1,036,654 cubic miles, but with his pocket dimensional shorts, they can, well, fit in his pocket. Around his humble island are bands of pirates, but they are no threat against Chad if they attack individually. One day however, the captain of one of the pirate bands known as Gilbert the Great, contacted all of the other pirate captains and, together, they stole all of Chad’s oranges by taking his pocket dimensional shorts. There is no way that Chad is going to be able to defeat ALL of the pirates on his own. He is going to need help from some sort of great weapon, or else he won’t be able to get his oranges back…";
-                ptext3.innerHTML = "";
-                ptext4.innerHTML = "";
+                ptext1.innerHTML = "Chad is an absolute hunk of a man. He is the sole inhabitant of a small island that is part of a long archipelago in the Carribean. He decided to live there once he bought all 15,676,000,000 oranges in America. Nowadays, he sleeps in his hut all day and builds new things out of his surplus of oranges. He stores this surplus of oranges in his shorts, that just so happen to contain his own personal pocket dimension, which he acquired from a dangerous adventure where he lived off of nothing but his copious amount of oranges. The oranges take up about 1,036,654 cubic miles, but with his pocket dimensional shorts, they can, well, fit in his pocket. Around his humble island are bands of pirates, but they are no threat against Chad if they attack individually. One day however, the captain of one of the pirate bands known as Gilbert the Great, contacted all of the other pirate captains and, together, they stole all of Chad’s oranges by taking his pocket dimensional shorts. There is no way that Chad is going to be able to defeat ALL of the pirates on his own. He is going to need help from some sort of great weapon, or else he won’t be able to get his oranges back…";
+                ptext2.innerHTML = "One day, Chad woke up without his shorts on. Should he go and look for something to wear?";
                 b1.innerHTML = "Yes";
                 b2.innerHTML = "No";
                 b1.style.display = "block";
                 b2.style.display = "block";
                 b3.style.display = "none";
                 b4.style.display = "none";
-                state = "meetWitch"
             }
 
-            function meetWitch(){
+            function chooseWeapon(){
                 pic.src = "images/oranges.jpg";
-                ptext1.innerHTML = "Hello, I have a spell to put on you.";
-                ptext2.innerHTML = "What would you like to do?";
-                ptext3.innerHTML = "";
-                ptext4.innerHTML = "";
-                b1.innerHTML = "Attack";
-                b2.innerHTML = "Run";
-                b3.innerHTML = "Stay";
+                ptext1.innerHTML = "He got a new pair of shorts which had a note, it was from the pirates. The note read, “We got yure orenges. And oui wont giv them bak… Ha ha ha” It took Chad a while to finish reading it because of the handwriting, but he eventually did and decided that he needed to get his oranges back. He went to his armoury for weapons.";
+                ptext2.innerHTML = "What weapon should he choose?";
+                b1.innerHTML = "Sword";
+                b2.innerHTML = "Axe";
+                b3.innerHTML = "Spoon";
                 b1.style.display = "block";
                 b2.style.display = "block";
                 b3.style.display = "block";
                 b4.style.display = "none";
-                state = "meetWitch"
+            }
+
+            function end(){
+                pic.src = "images/youdied.png";
+                ptext1.innerHTML = "THE END...";
+                ptext2.innerHTML = "";
+                b1.innerHTML = "Go Back (Best Option)"
+                b1.style.display = "block";
+                b2.style.display = "none";
+                b3.style.display = "none";
+                b4.style.display = "none";
+            }
+
+            function putSpellOnWeapon(){
+                pic.src = "#";
+                ptext1.innerHTML = "After choosing the " + weapon + ", you decide to put a spell on it to make it the perfect weapon. You get your book of spells and look for the weapon enhancing section."
             }
 
             //state machine
             function bclick(button){
                 if (state == "intro"){
                     if (button == 1){
-                        meetWitch();
+                        chooseWeapon();
+                        state = "chooseWeapon"
                     }else if (button == 2){
-                        //Send them somewhere else
+                        end();
+                        state = "end";
+                    }
+                }else if (state == "end"){
+                    if (button == 1){
+                        intro();
+                        state = "intro";
+                    }
+                }else if (state == "chooseWeapon"){
+                    if (button == 1){
+                        weapon = "sword";
+                        putSpellOnWeapon();
+                        state = "putSpellOnWeapon";
+                    }else if (button == 2){
+                        weapon = "axe";
+                        putSpellOnWeapon();
+                        state = "putSpellOnWeapon";
+                    }else if (button == 3){
+                        weapon = "spoon";
+                        putSpellOnWeapon();
+                        state = "putSpellOnWeapon";
                     }
                 }
             }
