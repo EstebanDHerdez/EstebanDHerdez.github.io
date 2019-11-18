@@ -115,6 +115,7 @@
             var b4 = document.getElementById('b4');
             var state = "intro";
             var weapon = "";
+            var spell = "";
             intro();
 
             function intro(){
@@ -154,8 +155,29 @@
             }
 
             function putSpellOnWeapon(){
-                pic.src = "#";
+                pic.src = "images/Enchanting_Table.png";
                 ptext1.innerHTML = "After choosing the " + weapon + ", you decide to put a spell on it to make it the perfect weapon. You get your book of spells and look for the weapon enhancing section."
+                ptext2.innerHTML = "Which spell do you choose to enhance your weapon?";
+                b1.innerHTML = "Sharpness";
+                b2.innerHTML = "Toughness";
+                b3.innerHTML = "Quickness";
+                b4.innerHTML = "Shininess";
+                b1.style.display = "block";
+                b2.style.display = "block";
+                b3.style.display = "block";
+                b4.style.display = "block";
+            }
+
+            function niceSpell(){
+                pic.src = "#";
+                ptext1.innerHTML = "You chose to put " + spell + " on your weapon. Cool choice!";
+                ptext2.innerHTML = "Now, are you ready to embark on your adventure!";
+                b1.innerHTML = "YES!";
+                b2.innerHTML = "no..."
+                b1.style.display = "block";
+                b2.style.display = "block";
+                b3.style.display = "none";
+                b4.style.display = "none";
             }
 
             //state machine
@@ -186,6 +208,32 @@
                         weapon = "spoon";
                         putSpellOnWeapon();
                         state = "putSpellOnWeapon";
+                    }
+                }else if (state == "putSpellOnWeapon"){
+                    if (button == 1){
+                        spell = "sharpness";
+                        niceSpell();
+                        state = "niceSpell";
+                    }else if (button == 2){
+                        spell = "toughness";
+                        niceSpell();
+                        state = "niceSpell";
+                    }else if (button == 3){
+                        spell = "quickness";
+                        niceSpell();
+                        state = "niceSpell";
+                    }else if (button == 4){
+                        spell = "shininess";
+                        niceSpell();
+                        state = "niceSpell";
+                    }
+                }else if (state == "niceSpell"){
+                    if (button == 1){
+                        letsGo();
+                        state = "letsGo";
+                    }else if (button == 2){
+                        bruhLetsAdventure();
+                        state = "bruhLetsAdventure";
                     }
                 }
             }
