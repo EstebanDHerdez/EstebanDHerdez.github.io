@@ -147,7 +147,7 @@
                 pic.src = "images/thanoos.gif";
                 ptext1.innerHTML = "THE END...";
                 ptext2.innerHTML = "";
-                b1.innerHTML = "Go Back (Best Option)"
+                b1.innerHTML = "[Go Back]"
                 b1.style.display = "block";
                 b2.style.display = "none";
                 b3.style.display = "none";
@@ -161,7 +161,7 @@
                 b1.innerHTML = "Sharpness";
                 b2.innerHTML = "Toughness";
                 b3.innerHTML = "Quickness";
-                b4.innerHTML = "Shininess";
+                b4.innerHTML = "[Go Back]";
                 b1.style.display = "block";
                 b2.style.display = "block";
                 b3.style.display = "block";
@@ -169,14 +169,15 @@
             }
 
             function niceSpell(){
-                pic.src = "images/wand.png";
-                ptext1.innerHTML = "You chose to put " + spell + " on your weapon. Cool choice!";
-                ptext2.innerHTML = "Now, are you ready to embark on your adventure!";
+                pic.src = "images/theBackpack.png";
+                ptext1.innerHTML = "You chose to put the power of " + spell + " on your " + weapon + ". Nice choice! So, you have your weapon, you have a new pair of shorts, and you want your oranges back.";
+                ptext2.innerHTML = "Are you ready to embark on your adventure?";
                 b1.innerHTML = "YES!";
                 b2.innerHTML = "no..."
+                b3.innerHTML = "[Go Back]"
                 b1.style.display = "block";
                 b2.style.display = "block";
-                b3.style.display = "none";
+                b3.style.display = "block";
                 b4.style.display = "none";
             }
 
@@ -227,7 +228,7 @@
             }
 
             function pirateBuilding(){
-                pic.src = "images/noPirates";
+                pic.src = "images/noPirates.png";
                 ptext1.innerHTML = "You walk into the building and see Gilbert The Great with his pirate crew!!";
                 ptext2.innerHTML = "How do you react?";
                 b1.innerHTML = "ATTACK!!";
@@ -236,6 +237,19 @@
                 b1.style.display = "block";
                 b2.style.display = "block";
                 b3.style.display = "block";
+                b4.style.display = "none";
+            }
+            //ATTACK
+
+            function attack(){
+                pic.src = "#";
+                ptext1.innerHTML = "You start rushing at Gilbert"
+                ptext2.innerHTML = "";
+                b1.innerHTML = "";
+                b2.innerHTML = "";
+                b1.style.display = "block";
+                b2.style.display = "block";
+                b3.style.display = "none";
                 b4.style.display = "none";
             }
 
@@ -282,9 +296,8 @@
                         niceSpell();
                         state = "niceSpell";
                     }else if (button == 4){
-                        spell = "shininess";
-                        niceSpell();
-                        state = "niceSpell";
+                        chooseWeapon();
+                        state = "chooseWeapon";
                     }
                 }else if (state == "niceSpell"){
                     if (button == 1){
@@ -293,6 +306,9 @@
                     }else if (button == 2){
                         bruhLetsAdventure();
                         state = "bruhLetsAdventure";
+                    }else if (button == 3){
+                        putSpellOnWeapon();
+                        state = "putSpellOnWeapon";
                     }
                 }else if (state == "letsGo"){
                     if (button == 1){
@@ -317,11 +333,14 @@
                     }
                 }else if (state == "pirateBuilding"){
                     if (button == 1){
-                        state = "";
+                        attack();
+                        state = "attack";
                     }else if (button == 2){
-                        state = "";
+                        thinkFirst();
+                        state = "thinkFirst";
                     }else if (button == 3){
-                        state = "";
+                        listenToThem();
+                        state = "listenToThem";
                     }
                 }else if (state == "relaxBefore"){
                     if (button == 1){
