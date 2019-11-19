@@ -185,7 +185,7 @@
                 ptext1.innerHTML = "Yes! You finally start heading to the pirates who have fled to Florida. You get on a boat and begin rowing. You get to Florida and now you need to find the pirates.";
                 ptext2.innerHTML = "What do you do?";
                 b1.innerHTML = "Ask a stranger about the pirates";
-                b2.innerHTML = "Go to the building called 'No pir8s herrre'";
+                b2.innerHTML = "Go to the building labeled 'No pir8s herrre'";
                 b1.style.display = "block";
                 b2.style.display = "block";
                 b3.style.display = "none";
@@ -193,13 +193,49 @@
             }
 
             function bruhLetsAdventure(){
-                pic.src = "images/thanoos.gif";
-                ptext1.innerHTML = "THE END...";
+                pic.src = "images/questionMark.png";
+                ptext1.innerHTML = "Well, if you are not ready, would you like to relax a little before your adventure?";
                 ptext2.innerHTML = "";
-                b1.innerHTML = "Go Back (Best Option)"
+                b1.innerHTML = "Yes, please";
+                b2.innerHTML = "Nah, I'll just continue my adventure right now";
+                b1.style.display = "block";
+                b2.style.display = "block";
+                b3.style.display = "none";
+                b4.style.display = "none";
+            }
+
+            function relaxBefore(){
+                pic.src = "images/waves.gif";
+                ptext1.innerHTML = "Enjoy the beach then :)";
+                ptext2.innerHTML = "";
+                b1.innerHTML = "Ok, I'm ready"
                 b1.style.display = "block";
                 b2.style.display = "none";
                 b3.style.display = "none";
+                b4.style.display = "none";
+            }
+
+            function askedStranger(){
+                pic.src = "images/stranger.png";
+                ptext1.innerHTML = "You ask the stranger if they have seen any pirates around. They say they did, and that it is pretty obvious where they went. They tell you they went into that building.";
+                ptext2.innerHTML = "";
+                b1.innerHTML = "Go to the building labeled 'No pir8s herrre'";
+                b1.style.display = "block";
+                b2.style.display = "none";
+                b3.style.display = "none";
+                b4.style.display = "none";
+            }
+
+            function pirateBuilding(){
+                pic.src = "images/noPirates";
+                ptext1.innerHTML = "You walk into the building and see Gilbert The Great with his pirate crew!!";
+                ptext2.innerHTML = "How do you react?";
+                b1.innerHTML = "ATTACK!!";
+                b2.innerHTML = "Think first";
+                b3.innerHTML = "Listen to them"
+                b1.style.display = "block";
+                b2.style.display = "block";
+                b3.style.display = "block";
                 b4.style.display = "none";
             }
 
@@ -268,8 +304,29 @@
                     }
                 }else if (state == "bruhLetsAdventure"){
                     if (button == 1){
-                        niceSpell();
-                        state = "niceSpell";
+                        relaxBefore();
+                        state = "relaxBefore";
+                    }else if (button == 2){
+                        letsGo();
+                        state = "letsGo"
+                    }
+                }else if (state == "askedStranger"){
+                    if (button == 1){
+                        pirateBuilding();
+                        state = "pirateBuilding";
+                    }
+                }else if (state == "pirateBuilding"){
+                    if (button == 1){
+                        state = "";
+                    }else if (button == 2){
+                        state = "";
+                    }else if (button == 3){
+                        state = "";
+                    }
+                }else if (state == "relaxBefore"){
+                    if (button == 1){
+                        letsGo();
+                        state = "letsGo";
                     }
                 }
             }
