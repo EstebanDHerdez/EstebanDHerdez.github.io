@@ -160,7 +160,7 @@
                 ptext2.innerHTML = "Which spell do you choose to enhance your weapon?";
                 b1.innerHTML = "Sharpness";
                 b2.innerHTML = "Toughness";
-                b3.innerHTML = "Quickness";
+                b3.innerHTML = "Shininess";
                 b4.innerHTML = "[Go Back]";
                 b1.style.display = "block";
                 b2.style.display = "block";
@@ -243,7 +243,7 @@
             //ATTACK
 
             function attack(){
-                pic.src = "#";
+                pic.src = "images/chadRunning.gif";
                 ptext1.innerHTML = "You start rushing towards Gilbert and pull out your " + weapon + " to swing at him, but as you do, another pirate stops your attack. You move back and make a second move.";
                 ptext2.innerHTML = "What will your second move be?";
                 b1.innerHTML = "Swing at the pirate that blocked you";
@@ -255,7 +255,7 @@
             }
 
             function swungRando(){
-                pic.src = "#";
+                pic.src = "images/knockedOut.png";
                 ptext1.innerHTML = "You swing at him with your " + weapon + " and end up knocking him out because Chad doesn't kill people (He's a good guy). Now, with him out of the way, you look for Gilbert, but realize he left while you were dealing with the other pirate.";
                 ptext2.innerHTML = "What do you do?";
                 b1.innerHTML = "Chase Gilbert";
@@ -267,7 +267,7 @@
             }
 
             function shovedRando(){
-                pic.src = "#";
+                pic.src = "images/gilbert.png";
                 ptext1.innerHTML = "You shove the pirate out of the way and go after Gilbert. Gilbert pulls out his sword to defend himself and you both start battling: " + weapon + " versus sword.";
                 ptext2.innerHTML = "Do you plan to swing first or let him swing first?";
                 b1.innerHTML = "I swing first";
@@ -279,8 +279,8 @@
             }
 
             function investigate(){
-                pic.src = "#";
-                ptext1.innerHTML = "You get on your knee to investigate the body. Hopefully, you'll find a clue as to why they wanted your oranges in the first place or where they're going. You check all of the pirate's pockets to find a toothbrush, a hammer, and ,most importantly, a paper that has directions to a hotel. You remember the hammer you found and consider trading your " + weapon + " for the hammer before you go.";
+                pic.src = "images/detective.png";
+                ptext1.innerHTML = "You get on your knee to investigate the body. Hopefully, you'll find a clue as to why they wanted your oranges in the first place or where they're going. You check all of the pirate's pockets. You find a toothbrush, a hammer, and ,most importantly, a paper that has directions to a hotel. You figure out that they must be going to the hotel. You remember the hammer you found and consider trading your " + weapon + " for the hammer before you go.";
                 ptext2.innerHTML = "Do you want to switch your " + weapon + " for the hammer?";
                 b1.innerHTML = "Yes";
                 b2.innerHTML = "No";
@@ -291,7 +291,7 @@
             }
 
             function chaseGilbert(){
-                pic.src = "#";
+                pic.src = "images/peekingWindow.gif";
                 ptext1.innerHTML = "You sprint out to look for Gilbert, but don't see him anywhere. As you're wandering around, you see a pirate watching you from a hotel window for a split second. You think, 'That must be where they're hiding.' You know that it won't be easy and wonder if you should train a little before you go.";
                 ptext2.innerHTML = "Do you want to train?";
                 b1.innerHTML = "Yes";
@@ -303,7 +303,7 @@
             }
 
             function hotelTraining(){
-                pic.src = "#";
+                pic.src = "images/training.gif";
                 ptext1.innerHTML = "Training time!";
                 ptext2.innerHTML = "";
                 b1.innerHTML = "I'm ready!";
@@ -314,8 +314,8 @@
             }
 
             function goToHotel(){
-                pic.src = "#";
-                ptext1.innerHTML = "you go to the hotel with your " + weapon + " in hand. You're finally ready.";
+                pic.src = "images/pirateHotel.png";
+                ptext1.innerHTML = "Ok! You go to the hotel. You have your " + weapon + " in hand. You're finally ready.";
                 ptext2.innerHTML = "Let's do this >=-)";
                 b1.innerHTML = "Kick the door open";
                 b2.innerHTML = "Walk into the hotel";
@@ -366,7 +366,7 @@
                         niceSpell();
                         state = "niceSpell";
                     }else if (button == 3){
-                        spell = "quickness";
+                        spell = "shininess";
                         niceSpell();
                         state = "niceSpell";
                     }else if (button == 4){
