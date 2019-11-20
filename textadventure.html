@@ -239,19 +239,93 @@
                 b3.style.display = "block";
                 b4.style.display = "none";
             }
+
             //ATTACK
 
             function attack(){
                 pic.src = "#";
-                ptext1.innerHTML = "You start rushing at Gilbert"
-                ptext2.innerHTML = "";
-                b1.innerHTML = "";
-                b2.innerHTML = "";
+                ptext1.innerHTML = "You start rushing towards Gilbert and pull out your " + weapon + " to swing at him, but as you do, another pirate stops your attack. You move back and make a second move.";
+                ptext2.innerHTML = "What will your second move be?";
+                b1.innerHTML = "Swing at the pirate that blocked you";
+                b2.innerHTML = "Shove him and try to attack Gilbert again";
                 b1.style.display = "block";
                 b2.style.display = "block";
                 b3.style.display = "none";
                 b4.style.display = "none";
             }
+
+            function swungRando(){
+                pic.src = "#";
+                ptext1.innerHTML = "You swing at him with your " + weapon + " and end up knocking him out because Chad doesn't kill people (He's a good guy). Now, with him out of the way, you look for Gilbert, but realize he left while you were dealing with the other pirate.";
+                ptext2.innerHTML = "What do you do?";
+                b1.innerHTML = "Chase Gilbert";
+                b2.innerHTML = "Investigate the pirate you knocked out";
+                b1.style.display = "block";
+                b2.style.display = "block";
+                b3.style.display = "none";
+                b4.style.display = "none";
+            }
+
+            function shovedRando(){
+                pic.src = "#";
+                ptext1.innerHTML = "You shove the pirate out of the way and go after Gilbert. Gilbert pulls out his sword to defend himself and you both start battling: " + weapon + " versus sword.";
+                ptext2.innerHTML = "Do you plan to swing first or let him swing first?";
+                b1.innerHTML = "I swing first";
+                b2.innerHTML = "Let him swing first";
+                b1.style.display = "block";
+                b2.style.display = "block";
+                b3.style.display = "none";
+                b4.style.display = "none";
+            }
+
+            function investigate(){
+                pic.src = "#";
+                ptext1.innerHTML = "You get on your knee to investigate the body. Hopefully, you'll find a clue as to why they wanted your oranges in the first place or where they're going. You check all of the pirate's pockets to find a toothbrush, a hammer, and ,most importantly, a paper that has directions to a hotel. You remember the hammer you found and consider trading your " + weapon + " for the hammer before you go.";
+                ptext2.innerHTML = "Do you want to switch your " + weapon + " for the hammer?";
+                b1.innerHTML = "Yes";
+                b2.innerHTML = "No";
+                b1.style.display = "block";
+                b2.style.display = "block";
+                b3.style.display = "none";
+                b4.style.display = "none";
+            }
+
+            function chaseGilbert(){
+                pic.src = "#";
+                ptext1.innerHTML = "You sprint out to look for Gilbert, but don't see him anywhere. As you're wandering around, you see a pirate watching you from a hotel window for a split second. You think, 'That must be where they're hiding.' You know that it won't be easy and wonder if you should train a little before you go.";
+                ptext2.innerHTML = "Do you want to train?";
+                b1.innerHTML = "Yes";
+                b2.innerHTML = "No";
+                b1.style.display = "block";
+                b2.style.display = "block";
+                b3.style.display = "none";
+                b4.style.display = "none";
+            }
+
+            function hotelTraining(){
+                pic.src = "#";
+                ptext1.innerHTML = "Training time!";
+                ptext2.innerHTML = "";
+                b1.innerHTML = "I'm ready!";
+                b1.style.display = "block";
+                b2.style.display = "none";
+                b3.style.display = "none";
+                b4.style.display = "none";
+            }
+
+            function goToHotel(){
+                pic.src = "#";
+                ptext1.innerHTML = "you go to the hotel with your " + weapon + " in hand. You're finally ready.";
+                ptext2.innerHTML = "Let's do this >=-)";
+                b1.innerHTML = "Kick the door open";
+                b2.innerHTML = "Walk into the hotel";
+                b1.style.display = "block";
+                b2.style.display = "block";
+                b3.style.display = "none";
+                b4.style.display = "none";
+            }
+
+            //END_OF_ATTACK
 
             //state machine
             function bclick(button){
@@ -346,6 +420,52 @@
                     if (button == 1){
                         letsGo();
                         state = "letsGo";
+                    }
+                }else if (state == "attack"){
+                    if (button == 1){
+                        swungRando();
+                        state = "swungRando";
+                    }else if (button == 2){
+                        shovedRando();
+                        state = "shovedRando";
+                    }
+                }else if (state == "swungRando"){
+                    if (button == 1){
+                        chaseGilbert();
+                        state = "chaseGilbert";
+                    }else if (button == 2){
+                        investigate();
+                        state = "investigate";
+                    }
+                }else if (state == "shovedRando"){
+                    if (button == 1){
+                        swungFirst();
+                        state = "swungFirst";
+                    }else if (button == 2){
+                        letSwingFirst();
+                        state = "letSwingFirst";
+                    }
+                }else if (state == "investigate"){
+                    if (button == 1){
+                        weapon = "hammer";
+                        goToHotel();
+                        state = "goToHotel";
+                    }else if (button == 2){
+                        goToHotel();
+                        state = "goToHotel";
+                    }
+                }else if (state == "chaseGilbert"){
+                    if (button == 1){
+                        hotelTraining();
+                        state = "hotelTraining";
+                    }else if (button == 2){
+                        goToHotel();
+                        state = "goToHotel";
+                    }
+                }else if (state == "hotelTraining"){
+                    if (button == 1){
+                        goToHotel();
+                        state = "goToHotel";
                     }
                 }
             }
