@@ -268,7 +268,7 @@
 
             function shovedRando(){
                 pic.src = "images/gilbert.png";
-                ptext1.innerHTML = "You shove the pirate out of the way and go after Gilbert. Gilbert pulls out his sword to defend himself and you both start battling: " + weapon + " versus sword.";
+                ptext1.innerHTML = "You shove the pirate out of the way and go after Gilbert. Gilbert pulls out his sword to defend himself and you both start battling: Your " + weapon + " versus his sword.";
                 ptext2.innerHTML = "Do you plan to swing first or let him swing first?";
                 b1.innerHTML = "I swing first";
                 b2.innerHTML = "Let him swing first";
@@ -278,9 +278,33 @@
                 b4.style.display = "none";
             }
 
+            functon swungFirst(){
+                pic.src = "#";
+                ptext1.innerHTML = "You swing towards Gilbert with your " + weapon + " before he can swing at you first! He blocks the swing with his sword. He swings back at you, but you block it with your " + weapon + ". He swings again and you dodge while swinging back at him. This time, you hit him hard and he falls to the floor, dropping his sword. The other pirates start attacking you, but they are nothing compared to Gilbert. You easily take them out with your " + weapon + ". You turn back to look at Gilbert and see him reaching for his sword.";
+                ptext2.innerHTML = "How do you stop him?";
+                b1.innerHTML = "Grab the sword first";
+                b2.innerHTML = "Kick the sword away";
+                b1.style.display = "block";
+                b2.style.display = "block";
+                b3.style.display = "none";
+                b4.style.display = "none";
+            }
+
+            function letSwingFirst(){
+                pic.src = "#";
+                ptext1.innerHTML = "Gilbert swings at you with a lot of power. You duck under and hit him in the leg with your " + weapon + ". He falls down, unable to stand. The other pirates rush towards you to protect their leader. They all attack at the same time to have the advantage, but you still take them all out fairly easily. You turn to Gilbert and see him getting back up on one leg to try and fight again.";
+                ptext2.innerHTML = "Will you let him back up?";
+                b1.innerHTML = "Stay down!";
+                b2.innerHTML = "Why not?";
+                b1.style.display = "block";
+                b2.style.display = "block";
+                b3.style.display = "none";
+                b4.style.display = "none";
+            }
+
             function investigate(){
                 pic.src = "images/detective.png";
-                ptext1.innerHTML = "You get on your knee to investigate the body. Hopefully, you'll find a clue as to why they wanted your oranges in the first place or where they're going. You check all of the pirate's pockets. You find a toothbrush, a hammer, and ,most importantly, a paper that has directions to a hotel. You figure out that they must be going to the hotel. You remember the hammer you found and consider trading your " + weapon + " for the hammer before you go.";
+                ptext1.innerHTML = "You get on your knee to investigate the body. Hopefully, you'll find a clue as to why they wanted your oranges in the first place or where they're going. You check all of the pirate's pockets. You find a toothbrush, a hammer, and, most importantly, a paper that has directions to a hotel. You figure out that they must be going to the hotel. You remember the hammer you found and consider trading your " + weapon + " for the hammer before you go.";
                 ptext2.innerHTML = "Do you want to switch your " + weapon + " for the hammer?";
                 b1.innerHTML = "Yes";
                 b2.innerHTML = "No";
@@ -466,6 +490,22 @@
                     if (button == 1){
                         goToHotel();
                         state = "goToHotel";
+                    }
+                }else if (state == "swungFirst"){
+                    if (button == 1){
+                        grabFirst();
+                        state = "grabFirst";
+                    }else if (button == 2){
+                        kickAway();
+                        state = "kickAway";
+                    }
+                }else if (state == "letSwingFirst"){
+                    if (button == 1){
+                        stayDown();
+                        state = "stayDown";
+                    }else if (button == 2){
+                        whyNot();
+                        state = "whyNot";
                     }
                 }
             }
