@@ -292,7 +292,7 @@
 
             function letSwingFirst(){
                 pic.src = "#";
-                ptext1.innerHTML = "Gilbert swings at you with a lot of power. You duck under and hit him in the leg with your " + weapon + ". He falls down, unable to stand. The other pirates rush towards you to protect their leader. They all attack at the same time to have the advantage, but you still take them all out fairly easily. You turn to Gilbert and see him getting back up on one leg to try and fight again.";
+                ptext1.innerHTML = "Gilbert swings at you with a lot of power. You duck under and hit him in the leg with your " + weapon + ". He falls down, unable to stand. The other pirates rush towards you to protect their leader. They all attack at the same time to have the advantage, but you still take them all out fairly easily. You turn to Gilbert and see him trying to get back up on one leg to try and fight again.";
                 ptext2.innerHTML = "Will you let him back up?";
                 b1.innerHTML = "Stay down!";
                 b2.innerHTML = "Why not?";
@@ -300,6 +300,22 @@
                 b2.style.display = "block";
                 b3.style.display = "none";
                 b4.style.display = "none";
+            }
+
+            function stayDown(){
+                pic.src = "#";
+                ptext1.innerHTML = "You step on Gilbert to make sure that he doesn't get back up. He ";
+                ptext2.innerHTML = "";
+                b1.innerHTML = "";
+                b2.innerHTML = "";
+                b1.style.display = "block";
+                b2.style.display = "block";
+                b3.style.display = "none";
+                b4.style.display = "none";
+            }
+
+            function whyNot(){
+                pic.src = "#";
             }
 
             function investigate(){
