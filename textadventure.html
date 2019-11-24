@@ -278,9 +278,9 @@
                 b4.style.display = "none";
             }
 
-            functon swungFirst(){
+            function swungFirst(){
                 pic.src = "#";
-                ptext1.innerHTML = "You swing towards Gilbert with your " + weapon + " before he can swing at you first! He blocks the swing with his sword. He swings back at you, but you block it with your " + weapon + ". He swings again and you dodge while swinging back at him. This time, you hit him hard and he falls to the floor, dropping his sword. The other pirates start attacking you, but they are nothing compared to Gilbert. You easily take them out with your " + weapon + ". You turn back to look at Gilbert and see him reaching for his sword.";
+                ptext1.innerHTML = "You swing towards Gilbert with your " + weapon + " before he can swing at you first! He blocks the swing with his sword. He swings back at you, but you block it with your " + weapon + ". He strikes again and you dodge while swinging back at him. This time, you hit him hard and he falls to the floor, dropping his sword. The other pirates start attacking you, but they are nothing compared to Gilbert. You easily take them out with your " + weapon + " in no time. You turn back to look at Gilbert and see him reaching for his sword.";
                 ptext2.innerHTML = "How do you stop him?";
                 b1.innerHTML = "Grab the sword first";
                 b2.innerHTML = "Kick the sword away";
@@ -304,7 +304,66 @@
 
             function stayDown(){
                 pic.src = "#";
-                ptext1.innerHTML = "You step on Gilbert to make sure that he doesn't get back up. He ";
+                ptext1.innerHTML = "You step on Gilbert to make sure that he doesn't get back up. He grunts sadly, feeling defeated. You have finally taken down Gilbert!";
+                ptext2.innerHTML = "What now?";
+                b1.innerHTML = "Ask for your oranges";
+                b2.innerHTML = "KILL HIM...";
+                b1.style.display = "block";
+                b2.style.display = "block";
+                b3.style.display = "none";
+                b4.style.display = "none";
+            }
+
+            function whyNot(){
+                pic.src = "#";
+                ptext1.innerHTML = "You decide to let Gilbert back up on one leg. When he does, he says, 'You fool. You shouldn't have let me up.' He jumps to the nearest table and pulls out a flintlock pistol hidden underneath it.";
+                ptext2.innerHTML = "What will you do!?!";
+                b1.innerHTML = "Deflect bullet with my " + weapon + "!"
+                b2.innerHTML = "Jump away!";
+                b1.style.display = "block";
+                b2.style.display = "block";
+                b3.style.display = "none";
+                b4.style.display = "none";
+            }
+
+            //DOWN
+
+            function jumpAway(){
+                pic.src = "images/youDied.png";
+                ptext1.innerHTML = "You jump away and try to dodge the shot!... But... Gilbert didn't miss..."
+                ptext2.innerHTML = "Why... did you... have... to let him... back up......";
+                b1.innerHTML = "[Respawn]";
+                b2.innerHTML = "[Title Screen (beginning)]"
+                b1.style.display = "block";
+                b2.style.display = "block";
+                b3.style.display = "none";
+                b4.style.display = "none";
+            }
+
+            function deflectBullet(){
+                pic.src = "#";
+                ptext1.innerHTML = "You quickly move your " + weapon + " in front of you. You deflect the shot! The bullet ricochets off your " + weapon + " and goes straight back to Gilbert. Gilbert falls down and doesn't look like he'll get back up... you walk over to him. He's dead. You're speechless.";
+                ptext2.innerHTML = "What do you decide to do?";
+                b1.innerHTML = "Look for the oranges that you have been after";
+                b2.innerHTML = "Press [F] to pay respects";
+                b1.style.display = "block";
+                b2.style.display = "block";
+                b3.style.display = "none";
+                b4.style.display = "none";
+            }
+
+            function killHim(){
+                pic.src = "#";
+                ptext1.innerHTML = "WHOA WHOA WHOA!!! CHILL OUT. Chad doesn't kill people. Just ask for your oranges and go you phsyco..."
+                ptext2.innerHTML = "";
+                b1.innerHTML = "Ask for your oranges";
+                b1.style.display = "block";
+                b2.style.display = "none";
+            }
+
+            function askForOranges(){
+                pic.src = "#";
+                ptext1.innerHTML = "";
                 ptext2.innerHTML = "";
                 b1.innerHTML = "";
                 b2.innerHTML = "";
@@ -314,9 +373,15 @@
                 b4.style.display = "none";
             }
 
-            function whyNot(){
+            function grabFirst(){
                 pic.src = "#";
             }
+
+            function kickAway(){
+                pic.src = "#";
+            }
+
+            //UP
 
             function investigate(){
                 pic.src = "images/detective.png";
@@ -368,6 +433,7 @@
             //END_OF_ATTACK
 
             //state machine
+
             function bclick(button){
                 if (state == "intro"){
                     if (button == 1){
@@ -522,6 +588,22 @@
                     }else if (button == 2){
                         whyNot();
                         state = "whyNot";
+                    }
+                }else if (state == "stayDown"){
+                    if (button == 1){
+                        askForOranges();
+                        state = "askForOranges";
+                    }else if (button == 2){
+                        killHim();
+                        state = "killHim";
+                    }
+                }else if (state == "whyNot"){
+                    if (button == 1){
+                        deflectBullet();
+                        state = "deflectBullet";
+                    }else if (button == 2){
+                        jumpAway();
+                        state = "jumpAway";
                     }
                 }
             }
