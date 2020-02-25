@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Home</title>
-        <link rel="stylesheet" type="text/css" href="style.css">
+        <link rel = "stylesheet" type = "text/css" href = "style.css">
 
         <style>
 
@@ -80,7 +80,7 @@
                 <div class="active">Projects</div>
                 <ul class="dropdown-content">
                     <li class="active"><a href="textadventure.html">Text Adventure</a></li>
-                    <li><a href="project2.html">Project 2</a></li>
+                    <li><a href="project2.html">Python Project</a></li>
                     <li><a href="project3.html">Project 3</a></li>
                 </ul>
             <li><a href="contactme.html">Contact Me</a></li>
@@ -326,14 +326,14 @@
                 b4.style.display = "none";
             }
 
-            //DOWN
+            //GO DOWN
 
             function jumpAway(){
                 pic.src = "images/youDied.png";
                 ptext1.innerHTML = "You jump away and try to dodge the shot!... But... Gilbert didn't miss..."
                 ptext2.innerHTML = "Why... did you... have... to let him... back up......";
                 b1.innerHTML = "[Respawn]";
-                b2.innerHTML = "[Title Screen (beginning)]"
+                b2.innerHTML = "[Title Screen]"
                 b1.style.display = "block";
                 b2.style.display = "block";
                 b3.style.display = "none";
@@ -381,7 +381,7 @@
                 pic.src = "#";
             }
 
-            //UP
+            //GO UP
 
             function investigate(){
                 pic.src = "images/detective.png";
@@ -604,6 +604,14 @@
                     }else if (button == 2){
                         jumpAway();
                         state = "jumpAway";
+                    }
+                }else if (state == "jumpAway"){
+                    if (button == 1){
+                        whyNot();
+                        state = "whyNot";
+                    }else if (button == 2){
+                        intro();
+                        state = "intro";
                     }
                 }
             }
